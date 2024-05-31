@@ -6,8 +6,8 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 const Loginpage = () => {
-  const [email, setEmail] = useState(' ');
-  const [password, setPassword] = useState(' ');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -25,8 +25,8 @@ const Loginpage = () => {
         toast.error(error.response.data.message);
       });
 
-      setEmail(' ');
-      setPassword(' ');
+      setEmail('');
+      setPassword('');
       
     // setTimeout(() => {
     //   navigate("/landingpage");
