@@ -25,7 +25,7 @@ const Resetpwd = () => {
         setUsername(res.data.result.username)
         setEmail(res.data.result.email)
         toast.success(res.data.message)
-        navigate('/login')
+       
     }
     )
       .catch((error) => {
@@ -43,6 +43,7 @@ const Resetpwd = () => {
       .then((res) => {
         
         toast.success(res.data.message)
+        navigate('/login')
   })
       .catch((error) => {
         console.log(error);
