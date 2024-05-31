@@ -24,7 +24,7 @@ const Resetpwd = () => {
         setData(res.data.result)
         setUsername(res.data.result.username)
         setEmail(res.data.result.email)
-        toast.success(res.data.message)
+        //toast.success(res.data.message)
        
     }
     )
