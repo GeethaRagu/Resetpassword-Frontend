@@ -17,7 +17,7 @@ const Resetpwd = () => {
   }, []);
   const fetchdata = async () => {
     await axios
-      .get(`https://resetpassword-backend-6wh0.onrender.com/api/user/checkstring/${str}`)
+      .get(`https://resetpassword-xpk9.onrender.com/api/user/checkstring/${str}`)
       .then((res) => {
         setData(res.data.result)
         setUsername(res.data.result.username)
@@ -38,7 +38,7 @@ const Resetpwd = () => {
     const payload = { username, email, password };
    // console.log(payload);
     await axios
-      .put("https://resetpassword-backend-6wh0.onrender.com/api/user/reset-password", payload)
+      .put("https://resetpassword-xpk9.onrender.com/api/user/reset-password", payload)
       .then((res) => {
         
         setMsg(res.data.message)

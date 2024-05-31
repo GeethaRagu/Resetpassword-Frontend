@@ -13,7 +13,7 @@ const Loginpage = () => {
 
     const payload = { email, password };
     await axios
-      .post("https://resetpassword-backend-6wh0.onrender.com/api/user/login-user", payload)
+      .post("https://resetpassword-xpk9.onrender.com/api/user/login-user", payload)
       .then((res) => setMsg(res.data.message))
       .catch((error) => {
         console.log(error);
