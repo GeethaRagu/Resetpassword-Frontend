@@ -13,7 +13,7 @@ const Register = () => {
 
     const payload = { username, email, password };
     await axios
-      .post("https://resetpassword-xpk9.onrender.com/api/user/register-user", payload)
+      .post("https://resetpassword-backend-6wh0.onrender.com/api/user/register-user", payload)
       .then((res) => setMsg(res.data.message))
       .catch((error) => {
         console.log(error);
