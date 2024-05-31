@@ -14,7 +14,7 @@ const Forgotpwd = () => {
 
     const payload = {email};
     await axios
-      .post("http://localhost:5000/api/user/forgot-password", payload)
+      .post("https://resetpassword-xpk9.onrender.com/api/user/forgot-password", payload)
       .then((res) => setMsg(res.data.message))
       .catch((error) => {
         console.log(error);
