@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Resetpwd = () => {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
+  const [username, setUsername] = useState(" ");
+  const [email, setEmail] = useState(" ");
+  const [password, setPassword] = useState(" ");
+
   const [data, setData] = useState("");
   const navigate = useNavigate();
   const { str } = useParams();
@@ -22,16 +24,15 @@ const Resetpwd = () => {
         setData(res.data.result)
         setUsername(res.data.result.username)
         setEmail(res.data.result.email)
-        setMsg(res.data.message)
+        toast.success(res.data.message)
+        navigate('/login')
     }
     )
       .catch((error) => {
         console.log(error);
-        setMsg(error.data.message);
+        toast.error(error.response.data.message);
       });
   };
-  //setUsername(username);
-  //setEmail(email);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -41,15 +42,13 @@ const Resetpwd = () => {
       .put("https://resetpassword-xpk9.onrender.com/api/user/reset-password", payload)
       .then((res) => {
         
-        setMsg(res.data.message)
+        toast.success(res.data.message)
   })
       .catch((error) => {
         console.log(error);
-        setMsg(error.data.message);
+        toast.error(error.response.data.message);
       });
-    setTimeout(() => {
-      navigate("/login");
-    }, 1000);
+
   };
   return (
     <div>
@@ -95,7 +94,7 @@ const Resetpwd = () => {
             </div>
             <Button type="submit">Reset password</Button>
           </form>
-          <h5>{msg}</h5>
+          
         </div>
       </section>
     </div>

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Loginpage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
+  const [email, setEmail] = useState(' ');
+  const [password, setPassword] = useState(' ');
+
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,14 +16,21 @@ const Loginpage = () => {
     const payload = { email, password };
     await axios
       .post("https://resetpassword-xpk9.onrender.com/api/user/login-user", payload)
-      .then((res) => setMsg(res.data.message))
+      .then((res) => {
+        toast.success(res.data.message)
+        navigate("/landingpage");
+      })
       .catch((error) => {
         console.log(error);
-        setMsg(error.data.message);
+        toast.error(error.response.data.message);
       });
-    setTimeout(() => {
-      navigate("/landingpage");
-    }, 1000);
+
+      setEmail(' ');
+      setPassword(' ');
+      
+    // setTimeout(() => {
+    //   navigate("/landingpage");
+    // }, 1000);
   };
   return (
     <section className="centre_container opacity-75">
@@ -59,7 +68,7 @@ const Loginpage = () => {
           <br />
           Forgot Password ? <a href="forgotpassword">Click here</a>
         </div>
-        <h5>{msg}</h5>
+      
       </div>
       
     </section>
